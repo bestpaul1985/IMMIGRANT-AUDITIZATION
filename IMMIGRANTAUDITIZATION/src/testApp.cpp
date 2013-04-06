@@ -79,9 +79,9 @@ void testApp::setup(){
     
 
     //p
+    
     for (int i=0; i<6; i++) {
-
-        rects[i].set(ofGetWidth()/2*(i%2), ofGetHeight()/3*(i%3), ofGetWidth()/2, ofGetHeight()/3);
+        rects[i].set(1440/2*(i%2), 900/3*(i%3), 1440/2, 900/3);
     }
 
     
@@ -156,34 +156,20 @@ void testApp::draw(){
 	ofPushStyle();
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	ofPopStyle();
-	
-	
-    ofSetColor(255,255,255,100);
-    ofRect(500,ofGetHeight()-300,5*128,200);
-	
-	//Paul's code
-    for (int i=0; i<6; i++) {
-        
-        ofSetColor(255, 100);
-        ofRect(rects[i]);
-    }
+
     
 	// draw the fft resutls:
-	ofSetColor(255,255,255,255);
-	
-	float width = (float)(5*128) / nBandsToGet;
+	ofSetColor(255,255,255,100);
+	float width = (float)(1440) / nBandsToGet;
 	for (int i = 0;i < nBandsToGet; i++){
 		// (we use negative height here, because we want to flip them
 		// because the top corner is 0,0)
-		ofRect(500+i*width,ofGetHeight()-100,width,-(fftSmoothed[i] * 200));
+		ofRect(i*width,ofGetHeight(),width,-(fftSmoothed[i] * 200));
 	}
 	
 	// finally draw the playing circle:
-
-	ofEnableAlphaBlending();
-		ofSetColor(255,255,255,20);
-		ofCircle(px, py,50);	
-	ofDisableAlphaBlending();
+    ofSetColor(255,255,255,20);
+    ofCircle(px, py,50);
 	
 	ofSetHexColor(0xffffff);
 	ofCircle(px, py,8);
@@ -221,7 +207,17 @@ void testApp::draw(){
     }
     
     
-
+    
+	//Paul's code
+    for (int i=0; i<6; i++) {
+        if (rects[i].inside(px, py)) {
+            ofSetColor(255, 100);
+            ofRect(rects[i]);
+        }else{
+            ofSetColor(255, 50);
+            ofRect(rects[i]);
+        }
+    }
 }
 
 //--------------------------------------------------------------
