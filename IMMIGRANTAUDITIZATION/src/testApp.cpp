@@ -10,6 +10,16 @@ void testApp::setup(){
 	dog.loadSound("sounds/dog.mp3");	
 	rooster.loadSound("sounds/rooster.mp3");
 	
+	// load in city imgs
+	baltimore.load("imgs/baltimore.jpg");
+    birmingham.load("imgs/birmingham.jpg");
+    boston.load("imgs/boston.jpg");
+    detroit.load("imgs/detroit.jpg");
+    indianapolis.load("imgs/indianapolis.jpg");
+    losangeles.load("imgs/los-angeles.jpg");
+    nashville.load("imgs/nashville.jpg");
+    washingtondc.load("imgs/washington-dc.jpg");
+	
 	// we will bounce a circle using these variables:
 	px = 300;
 	py = 300;
