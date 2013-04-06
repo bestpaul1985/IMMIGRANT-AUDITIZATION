@@ -21,41 +21,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>BOSTON</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>ROCKS</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MY</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SOCKS</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>3X3 MATRIX(0,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>3X3 MATRIX(0,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>3X3 MATRIX(0,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>BOSTON</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -71,5 +36,5 @@
 <Widget>
     <Kind>20</Kind>
     <Name>IMAGE TOGGLE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

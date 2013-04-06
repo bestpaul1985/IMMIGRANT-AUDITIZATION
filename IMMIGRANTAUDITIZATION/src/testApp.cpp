@@ -70,10 +70,10 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
     
-
+    //p
     for (int i=0; i<6; i++) {
-        
-        rects[i].set(0, 0, ofGetWidth()/2, ofGetHeight()/3);
+
+        rects[i].set(ofGetWidth()/2*(i%2), ofGetHeight()/3*(i%3), ofGetWidth()/2, ofGetHeight()/3);
     }
 
     city = "";
@@ -204,7 +204,12 @@ void testApp::draw(){
         img_washingtondc.draw(50,50);
     }
     
-    
+    //Paul's code
+    for (int i=0; i<6; i++) {
+        ofSetColor(255/6*i);
+        ofRect(rects[i]);
+    }
+
 }
 
 //--------------------------------------------------------------
