@@ -5,10 +5,10 @@
 void testApp::setup(){	 
 
 	// load in sounds:
-	beat.loadSound("sounds/jdee_beat.mp3");
-	ow.loadSound("sounds/ow.mp3");	
-	dog.loadSound("sounds/dog.mp3");	
-	rooster.loadSound("sounds/rooster.mp3");
+	beat.loadSound("sounds/rocket.wav");
+	ow.loadSound("sounds/violin.aif");	
+	dog.loadSound("sounds/sustainednote.wav");	
+	rooster.loadSound("sounds/chant.wav");
 	
 	// load in city imgs
 	img_baltimore.loadImage("imgs/baltimore.jpg");
@@ -19,6 +19,7 @@ void testApp::setup(){
     img_losangeles.loadImage("imgs/los-angeles.jpg");
     img_nashville.loadImage("imgs/nashville.jpg");
     img_washingtondc.loadImage("imgs/washington-dc.jpg");
+
 	
 	// we will bounce a circle using these variables:
 	px = 300;
@@ -46,8 +47,7 @@ void testApp::setup(){
 	
     drawPadding = false;
     gui = new ofxUICanvas(0,0,length+xInit,ofGetHeight());
-    
-    gui->addWidgetDown(new ofxUILabel("Data Sound Toy", OFX_UI_FONT_LARGE));
+    gui->addWidgetDown(new ofxUILabel("IMMIGRANT-AUDITIZATION", OFX_UI_FONT_LARGE));
     gui->addSpacer(length, 2);
     //year
     vector<string> hnames; hnames.push_back("2000"); hnames.push_back("2005"); hnames.push_back("2010");
@@ -59,27 +59,27 @@ void testApp::setup(){
 //    gui->addWidgetSouthOf(new ofxUILabelButton(length-xInit, false, "SPECIFIED WIDTH BUTTON", OFX_UI_FONT_MEDIUM), "LABEL BUTTON");
     gui->addLabelToggle("NEW YORK", false);
     gui->addLabelToggle("BOSTON", false);
-    
+    gui->addLabelToggle("NEW YORK", false);
+    gui->addLabelToggle("BOSTON", false);
 
     //sound clips
-    gui->addSpacer(length-xInit, 2);
-    vector<string> vnames; vnames.push_back("ROCKS"); vnames.push_back("MY"); vnames.push_back("SOCKS");
+//    gui->addSpacer(length-xInit, 2);
+//    vector<string> vnames; vnames.push_back("ROCKS"); vnames.push_back("MY"); vnames.push_back("SOCKS");
+//    ofxUIRadio *radio = (ofxUIRadio *) gui->addWidgetDown(new ofxUIRadio(dim, dim, "VERTICAL RADIO", vnames, OFX_UI_ORIENTATION_VERTICAL));
+//    radio->activateToggle("SOCKS");
+
+//    gui->addSpacer(length-xInit, 2);
    
-    ofxUIRadio *radio = (ofxUIRadio *) gui->addWidgetDown(new ofxUIRadio(dim, dim, "VERTICAL RADIO", vnames, OFX_UI_ORIENTATION_VERTICAL));
-    
-    
-    radio->activateToggle("SOCKS");
-    
-    gui->addSpacer(length-xInit, 2);
-    gui->addWidgetDown(new ofxUIToggleMatrix(dim, dim, 3, 3, "3X3 MATRIX"));
-    gui->addWidgetRight(new ofxUIToggleMatrix(dim, dim, 3, 3, "DISABLE MULTIPLE"));
-    
-    ofxUIToggleMatrix* mtx = (ofxUIToggleMatrix *)gui->getWidget("DISABLE MULTIPLE");
-    mtx->setAllowMultiple(false);
-    gui->addWidgetSouthOf(new ofxUIToggleMatrix(dim,dim,1,6,"CUSTOM SIZE"), "3X3 MATRIX");
+//    gui->addWidgetDown(new ofxUIToggleMatrix(dim*3, dim*3.2, 3, 2, "3X2 MATRIX"));
+//    gui->addWidgetRight(new ofxUIToggleMatrix(dim, dim, 3, 3, "DISABLE MULTIPLE"));
+//    ofxUIToggleMatrix* mtx = (ofxUIToggleMatrix *)gui->getWidget("3X3 MATRIX");
+//    mtx->setAllowMultiple(false);
+//    gui->addWidgetSouthOf(new ofxUIToggleMatrix(dim,dim,1,6,"CUSTOM SIZE"), "3X3 MATRIX");
     
     gui->addSpacer(length-xInit, 2);
-    gui->addWidgetDown(new ofxUILabel("IMAGE BUTTON & TOGGLE", OFX_UI_FONT_MEDIUM));
+    gui->addWidgetDown(new ofxUILabel("PLAY THE MUSIC", OFX_UI_FONT_MEDIUM));
+    
+//    gui->addWidgetDown(new ofxUILabel("IMAGE BUTTON & TOGGLE", OFX_UI_FONT_MEDIUM));
     gui->addWidgetDown(new ofxUIImageButton(dim*2, dim*2, false, "GUI/pause.png", "IMAGE BUTTON"));
     gui->addWidgetRight(new ofxUIImageToggle(dim*2, dim*2, false, "GUI/play.png", "IMAGE TOGGLE"));
     
@@ -253,13 +253,10 @@ void testApp::guiEvent(ofxUIEventArgs &e)
         ofxUILabelToggle *toggle = (ofxUILabelToggle *) e.widget;
         if(e.widget->getName() == "NEW YORK")
         {
-            ofSetFullscreen(toggle->getValue());
 
         }
         else if(e.widget->getName() == "BOSTON")
         {
-            
-            ofSetFullscreen(toggle->getValue());
             city = "boston";
     
 //                ofPushMatrix();
@@ -272,6 +269,8 @@ void testApp::guiEvent(ofxUIEventArgs &e)
             
             
                     }
+            
+        }
         
     }
 	else if(name == "B1")
