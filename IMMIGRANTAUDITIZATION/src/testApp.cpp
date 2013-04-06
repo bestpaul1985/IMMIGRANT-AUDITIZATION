@@ -76,18 +76,15 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
     
-<<<<<<< HEAD
     //p
     for (int i=0; i<6; i++) {
 
         rects[i].set(ofGetWidth()/2*(i%2), ofGetHeight()/3*(i%3), ofGetWidth()/2, ofGetHeight()/3);
     }
 
-=======
 
     
     // Matthew's Code
->>>>>>> c15c73e496623ed00a03bdfadf3905f8047b919d
     city = "";
 
 }
@@ -265,6 +262,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
         else if(e.widget->getName() == "BOSTON")
         {
             city = "boston";
+            cout<<city<<endl;
     
 //                ofPushMatrix();
 //                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
