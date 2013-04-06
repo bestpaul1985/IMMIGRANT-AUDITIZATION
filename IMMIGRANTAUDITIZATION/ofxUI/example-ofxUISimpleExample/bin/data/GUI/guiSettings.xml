@@ -1,0 +1,56 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>BGR</Name>
+    <Value>163.736846924</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BGG</Name>
+    <Value>67.105262756</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BGB</Name>
+    <Value>128.842102051</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RED</Name>
+    <Value>117.816452026</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GREEN</Name>
+    <Value>183.987350464</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BLUE</Name>
+    <Value>82.310127258</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ALPHA</Name>
+    <Value>144.446212769</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS</Name>
+    <Value>178.481018066</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RESOLUTION</Name>
+    <Value>9.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>DRAW FILL</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>POSITION</Name>
+    <XValue>243.000000000</XValue>
+    <YValue>62.000003815</YValue>
+</Widget>
