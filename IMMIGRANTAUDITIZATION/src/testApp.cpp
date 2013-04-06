@@ -70,15 +70,14 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
     
-<<<<<<< HEAD
+
     for (int i=0; i<6; i++) {
         
         rects[i].set(0, 0, ofGetWidth()/2, ofGetHeight()/3);
     }
-=======
-    // ultility
+
     city = "";
->>>>>>> 37c817963d0a171da506fba39ed65a4aca988c01
+
 }
 
 

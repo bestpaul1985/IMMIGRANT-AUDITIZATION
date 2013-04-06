@@ -39,6 +39,7 @@ class testApp : public ofBaseApp{
         bool drawPadding;
         float red, green, blue;
     
+    vector<ofRectangle> rects;
     
     // city active
     string city;
