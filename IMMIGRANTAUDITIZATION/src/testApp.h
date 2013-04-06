@@ -38,5 +38,7 @@ class testApp : public ofBaseApp{
         void guiEvent(ofxUIEventArgs &e);
         bool drawPadding;
         float red, green, blue;
+    
+        vector<ofRectangle> rects;
 };
 
