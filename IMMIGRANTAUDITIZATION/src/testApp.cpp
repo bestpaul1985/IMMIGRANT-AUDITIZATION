@@ -39,19 +39,25 @@ void testApp::setup(){
     
     gui->addWidgetDown(new ofxUILabel("Data Sound Toy", OFX_UI_FONT_LARGE));
     gui->addSpacer(length, 2);
-
+    //year
     vector<string> hnames; hnames.push_back("2000"); hnames.push_back("2005"); hnames.push_back("2010");
 	gui->addWidgetDown(new ofxUIRadio(dim, dim, "Year", hnames, OFX_UI_ORIENTATION_HORIZONTAL));
-    
-    
-    gui->addLabelButton("Detroit", false);
+    //city
+    gui->addSpacer(length-xInit, 2);
+//    gui->addLabelButton("LABEL BUTTON", false);
 //    gui->addWidgetEastOf(new ofxUILabel("<- Automagically Sized", OFX_UI_FONT_SMALL),"LABEL BUTTON");
-    gui->addWidgetSouthOf(new ofxUILabelButton(length-xInit, false, "Boston", OFX_UI_FONT_MEDIUM), "LABEL BUTTON");
+//    gui->addWidgetSouthOf(new ofxUILabelButton(length-xInit, false, "SPECIFIED WIDTH BUTTON", OFX_UI_FONT_MEDIUM), "LABEL BUTTON");
+    gui->addLabelToggle("NEW YORK", false);
+    gui->addLabelToggle("BOSTON", false);
     
-    
+
+    //sound clips
     gui->addSpacer(length-xInit, 2);
     vector<string> vnames; vnames.push_back("ROCKS"); vnames.push_back("MY"); vnames.push_back("SOCKS");
+   
     ofxUIRadio *radio = (ofxUIRadio *) gui->addWidgetDown(new ofxUIRadio(dim, dim, "VERTICAL RADIO", vnames, OFX_UI_ORIENTATION_VERTICAL));
+    
+    
     radio->activateToggle("SOCKS");
     
     gui->addSpacer(length-xInit, 2);
@@ -127,7 +133,6 @@ void testApp::update(){
 		
 	}
 
-
 }
 
 //--------------------------------------------------------------
@@ -198,7 +203,16 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
     {
         ofxUILabelToggle *toggle = (ofxUILabelToggle *) e.widget;
-        cout << name << "\t value: " << toggle->getValue() << endl;
+        if(e.widget->getName() == "NEW YORK")
+        {
+            ofSetFullscreen(toggle->getValue());
+        }
+        else if(e.widget->getName() == "BOSTON")
+        {
+            
+            ofSetFullscreen(toggle->getValue());
+        }
+        
     }
 	else if(name == "B1")
 	{
