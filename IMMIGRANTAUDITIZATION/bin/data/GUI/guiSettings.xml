@@ -14,30 +14,6 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>17</Kind>
-    <Name>NEW YORK</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>BOSTON</Name>
-<<<<<<< HEAD
-    <Value>0</Value>
-=======
-    <Value>1</Value>
->>>>>>> c15c73e496623ed00a03bdfadf3905f8047b919d
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>NEW YORK</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>BOSTON</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
     <Kind>20</Kind>
     <Name>IMAGE TOGGLE</Name>
     <Value>0</Value>

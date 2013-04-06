@@ -4,6 +4,10 @@
 //--------------------------------------------------------------
 void testApp::setup(){	 
 
+    ofEnableAlphaBlending();
+    ofSetVerticalSync(true);
+	ofEnableSmoothing();
+    
 	// load in sounds:
 	beat.loadSound("sounds/rocket.wav");
 	ow.loadSound("sounds/violin.aif");	
@@ -37,8 +41,7 @@ void testApp::setup(){
 	nBandsToGet = 128;
     
     //UI
-    ofSetVerticalSync(true);
-	ofEnableSmoothing();
+   
     
     red = 233; blue = 27; green = 52;
     float dim = 32;
@@ -68,26 +71,22 @@ void testApp::setup(){
 
     //play buttons
     gui->addSpacer(length-xInit, 2);
-    gui->addWidgetDown(new ofxUILabel("PLAY THE MUSIC", OFX_UI_FONT_MEDIUM));
-    
     gui->addWidgetDown(new ofxUIImageButton(dim*2, dim*2, false, "GUI/pause.png", "IMAGE BUTTON"));
     gui->addWidgetRight(new ofxUIImageToggle(dim*2, dim*2, false, "GUI/play.png", "IMAGE TOGGLE"));
     
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
     
-<<<<<<< HEAD
+
     //p
     for (int i=0; i<6; i++) {
 
         rects[i].set(ofGetWidth()/2*(i%2), ofGetHeight()/3*(i%3), ofGetWidth()/2, ofGetHeight()/3);
     }
 
-=======
-
     
     // Matthew's Code
->>>>>>> c15c73e496623ed00a03bdfadf3905f8047b919d
+
     city = "";
 
 }
@@ -158,11 +157,17 @@ void testApp::draw(){
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	ofPopStyle();
 	
-	ofEnableAlphaBlending();
-		ofSetColor(255,255,255,100);
-		ofRect(500,ofGetHeight()-300,5*128,200);
-	ofDisableAlphaBlending();
 	
+    ofSetColor(255,255,255,100);
+    ofRect(500,ofGetHeight()-300,5*128,200);
+	
+	//Paul's code
+    for (int i=0; i<6; i++) {
+        
+        ofSetColor(255, 100);
+        ofRect(rects[i]);
+    }
+    
 	// draw the fft resutls:
 	ofSetColor(255,255,255,255);
 	
@@ -183,7 +188,6 @@ void testApp::draw(){
 	ofSetHexColor(0xffffff);
 	ofCircle(px, py,8);
     
-    cout<<city<<endl;
     if (city == "boston") {
         img_boston.draw(50,50);
     }
@@ -216,11 +220,7 @@ void testApp::draw(){
         img_washingtondc.draw(50,50);
     }
     
-    //Paul's code
-    for (int i=0; i<6; i++) {
-        ofSetColor(255/6*i);
-        ofRect(rects[i]);
-    }
+    
 
 }
 
@@ -254,30 +254,30 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUILabelButton *button = (ofxUILabelButton *) e.widget;
         cout << name << "\t value: " << button->getValue() << endl;
-    }
-    else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
-    {
         ofxUILabelToggle *toggle = (ofxUILabelToggle *) e.widget;
         if(e.widget->getName() == "NEW YORK")
         {
-
+            
         }
         else if(e.widget->getName() == "BOSTON")
         {
             city = "boston";
-    
-//                ofPushMatrix();
-//                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
-//                    ofRotate(ofRandom(-25,25), 0, 0, 1);//rotate from centre
-//                    ofPushMatrix();
-//                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
-//                    ofPopMatrix();
-//                ofPopMatrix();
-            
-            
-                    }
-            
+           
+            //                ofPushMatrix();
+            //                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
+            //                    ofRotate(ofRandom(-25,25), 0, 0, 1);//rotate from centre
+            //                    ofPushMatrix();
+            //                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
+            //                    ofPopMatrix();
+            //                ofPopMatrix();
+        
         }
+    }
+    else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
+    {
+ 
+            
+    }
         
    
 
