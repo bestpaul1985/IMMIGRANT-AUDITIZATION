@@ -38,5 +38,20 @@ class testApp : public ofBaseApp{
         void guiEvent(ofxUIEventArgs &e);
         bool drawPadding;
         float red, green, blue;
+    
+    
+    // city active
+    string city;
+
+    // city imgs
+    ofImage img_baltimore;
+    ofImage img_boston;
+    ofImage img_detroit;
+    ofImage img_indianapolis;
+    ofImage img_losangeles;
+    ofImage img_nashville;
+    ofImage img_washingtondc;
+    ofImage img_birmingham;
+    
 };
 

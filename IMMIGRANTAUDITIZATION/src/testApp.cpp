@@ -11,14 +11,14 @@ void testApp::setup(){
 	rooster.loadSound("sounds/rooster.mp3");
 	
 	// load in city imgs
-	baltimore.load("imgs/baltimore.jpg");
-    birmingham.load("imgs/birmingham.jpg");
-    boston.load("imgs/boston.jpg");
-    detroit.load("imgs/detroit.jpg");
-    indianapolis.load("imgs/indianapolis.jpg");
-    losangeles.load("imgs/los-angeles.jpg");
-    nashville.load("imgs/nashville.jpg");
-    washingtondc.load("imgs/washington-dc.jpg");
+	img_baltimore.loadImage("imgs/baltimore.jpg");
+    img_birmingham.loadImage("imgs/birmingham.jpg");
+    img_boston.loadImage("imgs/boston.jpg");
+    img_detroit.loadImage("imgs/detroit.jpg");
+    img_indianapolis.loadImage("imgs/indianapolis.jpg");
+    img_losangeles.loadImage("imgs/los-angeles.jpg");
+    img_nashville.loadImage("imgs/nashville.jpg");
+    img_washingtondc.loadImage("imgs/washington-dc.jpg");
 	
 	// we will bounce a circle using these variables:
 	px = 300;
@@ -85,6 +85,9 @@ void testApp::setup(){
     
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
+    
+    // ultility
+    city = "";
 }
 
 
@@ -177,6 +180,41 @@ void testApp::draw(){
 	
 	ofSetHexColor(0xffffff);
 	ofCircle(px, py,8);
+    
+    
+    if (city == "boston") {
+        img_boston.draw(50,50);
+    }
+    
+    if (city == "baltimore") {
+        img_baltimore.draw(50,50);
+    }
+    
+    if (city == "birmingham") {
+        img_birmingham.draw(50,50);
+    }
+    
+    if (city == "detroit") {
+        img_detroit.draw(50,50);
+    }
+    
+    if (city == "indianapolis") {
+        img_indianapolis.draw(50,50);
+    }
+    
+    if (city == "losangeles") {
+        img_losangeles.draw(50,50);
+    }
+    
+    if (city == "nashville") {
+        img_nashville.draw(50,50);
+    }
+    
+    if (city == "washingtondc") {
+        img_washingtondc.draw(50,50);
+    }
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -216,12 +254,24 @@ void testApp::guiEvent(ofxUIEventArgs &e)
         if(e.widget->getName() == "NEW YORK")
         {
             ofSetFullscreen(toggle->getValue());
+
         }
         else if(e.widget->getName() == "BOSTON")
         {
             
             ofSetFullscreen(toggle->getValue());
-        }
+            city = "boston";
+    
+//                ofPushMatrix();
+//                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
+//                    ofRotate(ofRandom(10), 0, 0, 1);//rotate from centre
+//                    ofPushMatrix();
+//                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
+//                    ofPopMatrix();
+//                ofPopMatrix();
+            
+            
+                    }
         
     }
 	else if(name == "B1")

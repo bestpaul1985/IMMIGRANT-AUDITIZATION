@@ -14,6 +14,16 @@
     <Value>0</Value>
 </Widget>
 <Widget>
+    <Kind>17</Kind>
+    <Name>NEW YORK</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BOSTON</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>ROCKS</Name>
     <Value>0</Value>
