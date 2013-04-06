@@ -45,7 +45,7 @@ void testApp::setup(){
     float length = 320-xInit;
 	
     drawPadding = false;
-    gui = new ofxUICanvas(0,0,length+xInit,ofGetHeight());
+    gui = new ofxUICanvas(0,0,length+xInit, 400);
     gui->addWidgetDown(new ofxUILabel("IMMIGRANT-AUDITIZATION", OFX_UI_FONT_LARGE));
     gui->addSpacer(length, 2);
     //year
@@ -53,37 +53,26 @@ void testApp::setup(){
 	gui->addWidgetDown(new ofxUIRadio(dim, dim, "Year", hnames, OFX_UI_ORIENTATION_HORIZONTAL));
     //city
     gui->addSpacer(length-xInit, 2);
-//    gui->addLabelButton("LABEL BUTTON", false);
-//    gui->addWidgetEastOf(new ofxUILabel("<- Automagically Sized", OFX_UI_FONT_SMALL),"LABEL BUTTON");
-//    gui->addWidgetSouthOf(new ofxUILabelButton(length-xInit, false, "SPECIFIED WIDTH BUTTON", OFX_UI_FONT_MEDIUM), "LABEL BUTTON");
+
     gui->addLabelToggle("NEW YORK", false);
     gui->addLabelToggle("BOSTON", false);
     gui->addLabelToggle("NEW YORK", false);
     gui->addLabelToggle("BOSTON", false);
 
-    //sound clips
-//    gui->addSpacer(length-xInit, 2);
-//    vector<string> vnames; vnames.push_back("ROCKS"); vnames.push_back("MY"); vnames.push_back("SOCKS");
-//    ofxUIRadio *radio = (ofxUIRadio *) gui->addWidgetDown(new ofxUIRadio(dim, dim, "VERTICAL RADIO", vnames, OFX_UI_ORIENTATION_VERTICAL));
-//    radio->activateToggle("SOCKS");
-
-//    gui->addSpacer(length-xInit, 2);
-   
-//    gui->addWidgetDown(new ofxUIToggleMatrix(dim*3, dim*3.2, 3, 2, "3X2 MATRIX"));
-//    gui->addWidgetRight(new ofxUIToggleMatrix(dim, dim, 3, 3, "DISABLE MULTIPLE"));
-//    ofxUIToggleMatrix* mtx = (ofxUIToggleMatrix *)gui->getWidget("3X3 MATRIX");
-//    mtx->setAllowMultiple(false);
-//    gui->addWidgetSouthOf(new ofxUIToggleMatrix(dim,dim,1,6,"CUSTOM SIZE"), "3X3 MATRIX");
-    
+    //play buttons
     gui->addSpacer(length-xInit, 2);
     gui->addWidgetDown(new ofxUILabel("PLAY THE MUSIC", OFX_UI_FONT_MEDIUM));
     
-//    gui->addWidgetDown(new ofxUILabel("IMAGE BUTTON & TOGGLE", OFX_UI_FONT_MEDIUM));
     gui->addWidgetDown(new ofxUIImageButton(dim*2, dim*2, false, "GUI/pause.png", "IMAGE BUTTON"));
     gui->addWidgetRight(new ofxUIImageToggle(dim*2, dim*2, false, "GUI/play.png", "IMAGE TOGGLE"));
     
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
+    
+    for (int i=0; i<6; i++) {
+        
+        rects[i].set(0, 0, ofGetWidth()/2, ofGetHeight()/3);
+    }
 }
 
 
