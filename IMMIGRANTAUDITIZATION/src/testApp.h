@@ -53,6 +53,7 @@ class testApp : public ofBaseApp{
     ofImage img_nashville;
     ofImage img_washingtondc;
     ofImage img_birmingham;
+    ofImage img_BG;
     
 };
 

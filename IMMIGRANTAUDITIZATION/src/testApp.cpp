@@ -84,8 +84,11 @@ void testApp::setup(){
         rects[i].set(1440/2*(i%2), 900/3*(i%3), 1440/2, 900/3);
     }
 
+
+
     
     // Matthew's Code
+
 
     city = "";
 
@@ -258,6 +261,21 @@ void testApp::guiEvent(ofxUIEventArgs &e)
         else if(e.widget->getName() == "BOSTON")
         {
             city = "boston";
+<<<<<<< HEAD
+            cout<<city<<endl;
+    
+//                ofPushMatrix();
+//                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
+//                    ofRotate(ofRandom(-25,25), 0, 0, 1);//rotate from centre
+//                    ofPushMatrix();
+//                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
+//                    ofPopMatrix();
+//                ofPopMatrix();
+            
+            
+                    }
+            
+=======
            
             //                ofPushMatrix();
             //                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
@@ -267,6 +285,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
             //                    ofPopMatrix();
             //                ofPopMatrix();
         
+>>>>>>> bcb1d262fa90f1c12dfd0d8f03a6bf60ff918050
         }
     }
     else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
