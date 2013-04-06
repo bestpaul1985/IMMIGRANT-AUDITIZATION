@@ -55,10 +55,16 @@ void testApp::setup(){
     //city
     gui->addSpacer(length-xInit, 2);
 
-    gui->addLabelToggle("NEW YORK", false);
-    gui->addLabelToggle("BOSTON", false);
-    gui->addLabelToggle("NEW YORK", false);
-    gui->addLabelToggle("BOSTON", false);
+    gui->addLabelButton("NEW YORK", false);
+    gui->addLabelButton("BOSTON", false);
+    gui->addLabelButton("DETROIT", false);
+    gui->addLabelButton("BALTIMORE", false);
+    gui->addLabelButton("BIRMINGHAM", false);
+    gui->addLabelButton("DETROIT", false);
+    gui->addLabelButton("INDIANAPOLIS", false);
+    gui->addLabelButton("LOS ANGELES", false);
+    gui->addLabelButton("NASHVILLE", false);
+    gui->addLabelButton("WASHINGTON DC", false);
 
     //play buttons
     gui->addSpacer(length-xInit, 2);
@@ -70,12 +76,18 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
     
+<<<<<<< HEAD
     //p
     for (int i=0; i<6; i++) {
 
         rects[i].set(ofGetWidth()/2*(i%2), ofGetHeight()/3*(i%3), ofGetWidth()/2, ofGetHeight()/3);
     }
 
+=======
+
+    
+    // Matthew's Code
+>>>>>>> c15c73e496623ed00a03bdfadf3905f8047b919d
     city = "";
 
 }
@@ -171,7 +183,7 @@ void testApp::draw(){
 	ofSetHexColor(0xffffff);
 	ofCircle(px, py,8);
     
-    
+    cout<<city<<endl;
     if (city == "boston") {
         img_boston.draw(50,50);
     }
@@ -256,7 +268,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     
 //                ofPushMatrix();
 //                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
-//                    ofRotate(ofRandom(10), 0, 0, 1);//rotate from centre
+//                    ofRotate(ofRandom(-25,25), 0, 0, 1);//rotate from centre
 //                    ofPushMatrix();
 //                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
 //                    ofPopMatrix();
