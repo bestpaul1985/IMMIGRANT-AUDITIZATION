@@ -260,6 +260,19 @@ void testApp::draw(){
 	ofSetHexColor(0xffffff);
 	ofCircle(px, py,8);
     
+    
+    // draw rectangle hotspots
+    for (int i=0; i<6; i++) {
+        if (rects[i].inside(px, py)) {
+            ofSetColor(0, 100);
+            ofRect(rects[i]);
+        }else{
+            ofSetColor(255, 10);
+            ofRect(rects[i]);
+        }
+    }
+
+    
     if (city == "boston") {
         img_boston.draw(1100,375,img_w,img_h);
         for (int i=0; i<6; i++) {
@@ -318,16 +331,6 @@ void testApp::draw(){
     
     
     
-	// draw rectangle hotspots
-    for (int i=0; i<6; i++) {
-        if (rects[i].inside(px, py)) {
-            ofSetColor(0, 100);
-            ofRect(rects[i]);
-        }else{
-            ofSetColor(255, 10);
-            ofRect(rects[i]);
-        }
-    }
 }
 
 //--------------------------------------------------------------
@@ -375,19 +378,6 @@ void testApp::guiEvent(ofxUIEventArgs &e)
             }
             
         }
-//        if(e.widget->getName() == "DETROIT")
-//        {
-//            if (<#condition#>) {
-//                <#statements#>
-//            }
-//            city = "detroit";
-//           
-//        }
-//        else if(e.widget->getName() == "BOSTON")
-//        {
-//            city = "boston";
-//           
-//        }
         
     }
     else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
