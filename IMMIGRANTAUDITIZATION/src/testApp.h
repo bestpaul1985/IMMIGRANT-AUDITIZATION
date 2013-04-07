@@ -58,10 +58,14 @@ class testApp : public ofBaseApp{
         // city active
         string city;
 
-        // city imgs
     
-    int img_w;
-    int img_h;
+        // city data
+        float city_max[6];
+        float city_min[6];
+    
+        // city imgs        
+        int img_w;
+        int img_h;
     
         ofImage img_baltimore;
         ofImage img_boston;

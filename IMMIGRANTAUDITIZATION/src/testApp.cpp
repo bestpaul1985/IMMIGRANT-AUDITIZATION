@@ -178,6 +178,25 @@ void testApp::setup(){
     cityQuality[3] = "Middle Ed Unemployed";
     cityQuality[4] = "Low Education";
     cityQuality[5] = "Low Ed Unemployed";
+    
+    
+    city_max[0] = 50.4;
+    city_min[0] = 13.1;
+    
+    city_max[1] = 9.1;
+    city_min[1] = 0;
+    
+    city_max[2] = 54.5;
+    city_min[2] = 26.9;
+    
+    city_max[3] = 18.1;
+    city_min[3] = 1.6;
+    
+    city_max[4] = 46.5;
+    city_min[4] = 4.8;
+    
+    city_max[5] = 19.7;
+    city_min[5] = 0.4;
 }
 
 
@@ -242,8 +261,8 @@ void testApp::update(){
     
     if (city == "boston") {
 
-        sound[0].setVolume(ofMap(boston[0], 13.1, 50.4, 0, 1,true)); //ed-hi
-        sound[1].setVolume(ofMap(boston[1], 0, 9.1, 0, 1,true)); //un-hi
+        sound[0].setVolume(ofMap(boston[0], city_min[0], city_max[0], 0, 1,true)); //ed-hi
+        sound[1].setVolume(ofMap(boston[1], city_min[1], city_max[1], 0, 1,true)); //un-hi
         sound[2].setVolume(ofMap(boston[2],26.9,54.5,0,1,true));//ed-mid
         sound[3].setVolume(ofMap(boston[3],1.6,18.1,0,1,true));//un-mid
         sound[4].setVolume(ofMap(boston[4],4.8,46.5,0,1,true));//ed-low
