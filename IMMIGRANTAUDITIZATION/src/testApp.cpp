@@ -132,6 +132,46 @@ void testApp::setup(){
     detroit[4]= 16.1;//ed - low
     detroit[5]= 9.9;//un-low
     
+    boise[0] = 31.5; //ed-hi
+    boise[1] = 2.3;//un-hi
+    boise[2] = 38.2;//ed-mid
+    boise[3] = 4.5;//un-mid
+    boise[4]= 16.1;//ed - low
+    boise[5]= 9.9;//un-low
+    
+    
+    boulder[0] = 31.5; //ed-hi
+    boulder[1] = 2.3;//un-hi
+    boulder[2] = 38.2;//ed-mid
+    boulder[3] = 4.5;//un-mid
+    boulder[4]= 16.1;//ed - low
+    boulder[5]= 9.9;//un-low
+    
+    
+    lakeland[0] = 31.5; //ed-hi
+    lakeland[1] = 2.3;//un-hi
+    lakeland[2] = 38.2;//ed-mid
+    lakeland[3] = 4.5;//un-mid
+    lakeland[4]= 16.1;//ed - low
+    lakeland[5]= 9.9;//un-low
+    
+    
+    newyork[0] = 31.5; //ed-hi
+    newyork[1] = 2.3;//un-hi
+    newyork[2] = 38.2;//ed-mid
+    newyork[3] = 4.5;//un-mid
+    newyork[4]= 16.1;//ed - low
+    newyork[5]= 9.9;//un-low
+    
+    
+    riverside[0] = 31.5; //ed-hi
+    riverside[1] = 2.3;//un-hi
+    riverside[2] = 38.2;//ed-mid
+    riverside[3] = 4.5;//un-mid
+    riverside[4]= 16.1;//ed - low
+    riverside[5]= 9.9;//un-low
+
+    
     cityQuality[0] = "High Education";
     cityQuality[1] = "High Ed Unemployed";
     cityQuality[2] = "Middle Education";

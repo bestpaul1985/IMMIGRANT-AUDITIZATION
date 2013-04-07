@@ -42,6 +42,18 @@ class testApp : public ofBaseApp{
     
         float boston[6];
         float detroit[6];
+        float baltimore[6];
+        float indianapolis[6];
+        float losangeles[6];
+        float nashville[6];
+        float washingtondc[6];
+        float birmingham[6];
+        float boise[6];
+        float boulder[6];
+        float lakeland[6];
+        float newyork[6];
+        float riverside[6];
+
         string cityQuality[6];
         // city active
         string city;
