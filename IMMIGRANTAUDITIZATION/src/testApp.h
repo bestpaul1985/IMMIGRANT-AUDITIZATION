@@ -59,6 +59,11 @@ class testApp : public ofBaseApp{
         ofImage img_nashville;
         ofImage img_washingtondc;
         ofImage img_birmingham;
+    ofImage img_boise;
+    ofImage img_boulder;
+    ofImage img_lakeland;
+    ofImage img_newyork;
+    ofImage img_riverside;
         ofImage img_BG;
     
         ofTrueTypeFont font;

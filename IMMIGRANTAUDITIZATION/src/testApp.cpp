@@ -34,8 +34,14 @@ void testApp::setup(){
     img_losangeles.loadImage("imgs/los-angeles.jpg");
     img_nashville.loadImage("imgs/nashville.jpg");
     img_washingtondc.loadImage("imgs/washington-dc.jpg");
+    img_boise.loadImage("imgs/boise.jpg");
+    img_boulder.loadImage("imgs/boulder.jpg");
+    img_lakeland.loadImage("imgs/lakeland.jpg");
+    img_newyork.loadImage("imgs/newyork.jpg");
+    img_riverside.loadImage("imgs/riverside.jpg");
     img_BG.loadImage("imgs/us-lights.jpg");
-	
+    
+
 	// we will bounce a circle using these variables:
 	px = 300;
 	py = 300;
@@ -74,11 +80,18 @@ void testApp::setup(){
     gui->addLabelButton("DETROIT", false);
     gui->addLabelButton("BALTIMORE", false);
     gui->addLabelButton("BIRMINGHAM", false);
-    gui->addLabelButton("INDIANAPOLIS", false);
-    gui->addLabelButton("LOS ANGELES", false);
-    gui->addLabelButton("NASHVILLE", false);
+//    gui->addLabelButton("INDIANAPOLIS", false);
+//    gui->addLabelButton("LOS ANGELES", false);
+//    gui->addLabelButton("NASHVILLE", false);
     gui->addLabelButton("WASHINGTON DC", false);
 
+    gui->addLabelButton("BOISE", false);
+    gui->addLabelButton("BOULDER", false);
+    gui->addLabelButton("LAKELAND", false);
+    gui->addLabelButton("NEW YORK", false);
+    gui->addLabelButton("RIVERSIDE", false);
+
+    
     //play buttons
 //    gui->addSpacer(length-xInit, 2);
 //    gui->addWidgetDown(new ofxUIImageButton(dim*2, dim*2, false, "GUI/pause.png", "IMAGE BUTTON"));
@@ -104,7 +117,7 @@ void testApp::setup(){
     // Matthew's Code
     city = "";
    
-    //data
+    //data: year 2000
     boston[0] = 35.2; //ed-hi
     boston[1] = 2.5;//un-hi
     boston[2] = 37.6;//ed-mid
@@ -189,12 +202,12 @@ void testApp::update(){
     
     if (city == "boston") {
 
-        sound[0].setVolume(ofMap(boston[0], 13.1, 50.4, 0, 1,true));
-        sound[1].setVolume(ofMap(boston[1], 13.1, 50.4, 0, 1,true));
-        sound[2].setVolume(ofMap(boston[2],26.9,54.5,0,1,true));
-        sound[3].setVolume(ofMap(boston[3],1.6,18.1,0,1,true));
-        sound[4].setVolume(ofMap(boston[4],4.8,46.5,0,1,true));
-        sound[5].setVolume(ofMap(boston[5],0.4,19.7,0,1,true));
+        sound[0].setVolume(ofMap(boston[0], 13.1, 50.4, 0, 1,true)); //ed-hi
+        sound[1].setVolume(ofMap(boston[1], 0, 9.1, 0, 1,true)); //un-hi
+        sound[2].setVolume(ofMap(boston[2],26.9,54.5,0,1,true));//ed-mid
+        sound[3].setVolume(ofMap(boston[3],1.6,18.1,0,1,true));//un-mid
+        sound[4].setVolume(ofMap(boston[4],4.8,46.5,0,1,true));//ed-low
+        sound[5].setVolume(ofMap(boston[5],0.4,19.7,0,1,true));//un-low
         
 
    
@@ -213,6 +226,7 @@ void testApp::update(){
     }
     cout<<city<<endl;
 
+    cout<<sound[1].getVolume()<<endl;
     cout<<sound[4].getVolume()<<endl;
 
     
@@ -331,7 +345,26 @@ void testApp::draw(){
         img_washingtondc.draw(1000,400,img_w,img_h);
     }
     
+    if (city == "boise") {
+        img_boise.draw(200,250,img_w,img_h);
+    }
+
+    if (city == "boulder") {
+        img_boulder.draw(300,420,img_w,img_h);
+    }
+
+    if (city == "lakeland") {
+        img_lakeland.draw(900,550,img_w,img_h);
+    }
+
+    if (city == "newyork") {
+        img_newyork.draw(1050,350,img_w,img_h);
+    }
     
+    if (city == "riverside") {
+        img_riverside.draw(150,400,img_w,img_h);
+    }
+
     
 }
 
@@ -417,6 +450,40 @@ void testApp::guiEvent(ofxUIEventArgs &e)
             }
         }
         
+        if(name == "BOISE"){
+            if(button->getValue()){
+                city = "boise";
+                cout<<city<<endl;
+            }
+        }
+
+        if(name == "BOULDER"){
+            if(button->getValue()){
+                city = "boulder";
+                cout<<city<<endl;
+            }
+        }
+
+        if(name == "LAKELAND"){
+            if(button->getValue()){
+                city = "lakeland";
+                cout<<city<<endl;
+            }
+        }
+        
+        if(name == "NEW YORK"){
+            if(button->getValue()){
+                city = "newyork";
+                cout<<city<<endl;
+            }
+        }
+        
+        if(name == "RIVERSIDE"){
+            if(button->getValue()){
+                city = "riverside";
+                cout<<city<<endl;
+            }
+        }        
         
     }
     else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
