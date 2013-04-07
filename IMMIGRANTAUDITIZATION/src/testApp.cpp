@@ -79,11 +79,11 @@ void testApp::setup(){
     gui->addLabelButton("BOSTON", false);
     gui->addLabelButton("DETROIT", false);
     gui->addLabelButton("BALTIMORE", false);
-    gui->addLabelButton("BIRMINGHAM", false);
+//    gui->addLabelButton("BIRMINGHAM", false);
 //    gui->addLabelButton("INDIANAPOLIS", false);
 //    gui->addLabelButton("LOS ANGELES", false);
 //    gui->addLabelButton("NASHVILLE", false);
-    gui->addLabelButton("WASHINGTON DC", false);
+//    gui->addLabelButton("WASHINGTON DC", false);
 
     gui->addLabelButton("BOISE", false);
     gui->addLabelButton("BOULDER", false);
@@ -132,44 +132,51 @@ void testApp::setup(){
     detroit[4]= 16.1;//ed - low
     detroit[5]= 9.9;//un-low
     
-    boise[0] = 31.5; //ed-hi
+    baltimore[0] = 42.9; //ed-hi
+    baltimore[1] = 3.2;//un-hi
+    baltimore[2] = 38.4;//ed-mid
+    baltimore[3] = 4.0;//un-mid
+    baltimore[4]= 17.4;//ed - low
+    baltimore[5]= 5.4;//un-low
+
+    boise[0] = 16.4; //ed-hi
     boise[1] = 2.3;//un-hi
-    boise[2] = 38.2;//ed-mid
-    boise[3] = 4.5;//un-mid
-    boise[4]= 16.1;//ed - low
-    boise[5]= 9.9;//un-low
+    boise[2] = 39.1;//ed-mid
+    boise[3] = 5.3;//un-mid
+    boise[4]= 10.9;//ed - low
+    boise[5]= 8.9;//un-low
     
     
-    boulder[0] = 31.5; //ed-hi
-    boulder[1] = 2.3;//un-hi
-    boulder[2] = 38.2;//ed-mid
-    boulder[3] = 4.5;//un-mid
-    boulder[4]= 16.1;//ed - low
-    boulder[5]= 9.9;//un-low
+    boulder[0] = 41.2; //ed-hi
+    boulder[1] = 0.9;//un-hi
+    boulder[2] = 27.5;//ed-mid
+    boulder[3] = 1.6;//un-mid
+    boulder[4]= 4.9;//ed - low
+    boulder[5]= 3.9;//un-low
     
     
-    lakeland[0] = 31.5; //ed-hi
-    lakeland[1] = 2.3;//un-hi
-    lakeland[2] = 38.2;//ed-mid
-    lakeland[3] = 4.5;//un-mid
-    lakeland[4]= 16.1;//ed - low
-    lakeland[5]= 9.9;//un-low
+    lakeland[0] = 16.8; //ed-hi
+    lakeland[1] = 3.4;//un-hi
+    lakeland[2] = 37.5;//ed-mid
+    lakeland[3] = 3.8;//un-mid
+    lakeland[4]= 22.9;//ed - low
+    lakeland[5]= 5.7;//un-low
     
     
-    newyork[0] = 31.5; //ed-hi
-    newyork[1] = 2.3;//un-hi
-    newyork[2] = 38.2;//ed-mid
-    newyork[3] = 4.5;//un-mid
-    newyork[4]= 16.1;//ed - low
-    newyork[5]= 9.9;//un-low
+    newyork[0] = 23.6; //ed-hi
+    newyork[1] = 4.1;//un-hi
+    newyork[2] = 41.6;//ed-mid
+    newyork[3] = 7.3;//un-mid
+    newyork[4]= 18.4;//ed - low
+    newyork[5]= 10.6;//un-low
     
     
-    riverside[0] = 31.5; //ed-hi
-    riverside[1] = 2.3;//un-hi
-    riverside[2] = 38.2;//ed-mid
-    riverside[3] = 4.5;//un-mid
+    riverside[0] = 13.1; //ed-hi
+    riverside[1] = 3.3;//un-hi
+    riverside[2] = 35.8;//ed-mid
+    riverside[3] = 5.7;//un-mid
     riverside[4]= 16.1;//ed - low
-    riverside[5]= 9.9;//un-low
+    riverside[5]= 9.2;//un-low
 
     
     cityQuality[0] = "High Education";
@@ -260,29 +267,47 @@ void testApp::update(){
     }
     
     if (city == "boston") {
-
-        sound[0].setVolume(ofMap(boston[0], city_min[0], city_max[0], 0, 1,true)); //ed-hi
-        sound[1].setVolume(ofMap(boston[1], city_min[1], city_max[1], 0, 1,true)); //un-hi
-        sound[2].setVolume(ofMap(boston[2],26.9,54.5,0,1,true));//ed-mid
-        sound[3].setVolume(ofMap(boston[3],1.6,18.1,0,1,true));//un-mid
-        sound[4].setVolume(ofMap(boston[4],4.8,46.5,0,1,true));//ed-low
-        sound[5].setVolume(ofMap(boston[5],0.4,19.7,0,1,true));//un-low
-        
-
-   
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(boston[i], city_min[i], city_max[i], 0, 1,true));
+        }
     }
     
     if (city == "detroit") {
-        
-        sound[0].setVolume(ofMap(detroit[0],13.1,50.4,0,1,true)); //ed-hi
-        sound[1].setVolume(ofMap(detroit[1],0,9.1,0,1,true)); //un-hi
-        sound[2].setVolume(ofMap(detroit[2],26.9,54.5,0,1,true)); //ed-mid
-        sound[3].setVolume(ofMap(detroit[3],1.6,18.1,0,1,true)); //un-mid
-        sound[4].setVolume(ofMap(detroit[4],4.8,46.5,0,1,true));//ed-low
-        sound[5].setVolume(ofMap(detroit[5],0.4,19.7,0,1,true));//un-low
-        
-
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(detroit[i], city_min[i], city_max[i], 0, 1,true));
+        }        
     }
+    
+    if (city == "boise") {
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(boise[i], city_min[i], city_max[i], 0, 1,true));
+        }
+    }
+    
+    if (city == "boulder") {
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(boulder[i], city_min[i], city_max[i], 0, 1,true));
+        }
+    }
+    
+    if (city == "lakeland") {
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(lakeland[i], city_min[i], city_max[i], 0, 1,true));
+        }
+    }
+    
+    if (city == "newyork") {
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(newyork[i], city_min[i], city_max[i], 0, 1,true));
+        }
+    }
+    
+    if (city == "riverside") {
+        for (int i=0; i<6; i++) {
+            sound[i].setVolume(ofMap(riverside[i], city_min[i], city_max[i], 0, 1,true));
+        }
+    }
+    
     cout<<city<<endl;
 
     cout<<sound[1].getVolume()<<endl;
@@ -365,8 +390,18 @@ void testApp::draw(){
     
     if (city == "baltimore") {
         img_baltimore.draw(980,400,img_w,img_h);
-        
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(baltimore[i])+"% "+ cityQuality[i], 0, 0);
+                font.drawString(ofToString(baltimore[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+            }
+        }
     }
+
+    
     
     if (city == "birmingham") {
         img_birmingham.draw(800,500,img_w,img_h);
@@ -377,13 +412,10 @@ void testApp::draw(){
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
                 ofSetColor(255,200);
-                ofRectangle rect = font.getStringBoundingBox(ofToString(boston[i])+"% "+ cityQuality[i], 0, 0);
-                
-
+                ofRectangle rect = font.getStringBoundingBox(ofToString(detroit[i])+"% "+ cityQuality[i], 0, 0);
                 font.drawString(ofToString(detroit[i])+"% "+ cityQuality[i],
                                 rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
                                 rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
-                
             }
         }
     }
@@ -406,24 +438,69 @@ void testApp::draw(){
     
     if (city == "boise") {
         img_boise.draw(200,250,img_w,img_h);
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(boise[i])+"% "+ cityQuality[i], 0, 0);
+                font.drawString(ofToString(boise[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+            }
+        }
     }
-
+    
     if (city == "boulder") {
         img_boulder.draw(300,420,img_w,img_h);
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(boulder[i])+"% "+ cityQuality[i], 0, 0);
+                font.drawString(ofToString(boulder[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+            }
+        }
     }
-
+    
     if (city == "lakeland") {
         img_lakeland.draw(900,550,img_w,img_h);
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(lakeland[i])+"% "+ cityQuality[i], 0, 0);
+                font.drawString(ofToString(lakeland[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+            }
+        }
     }
-
+    
     if (city == "newyork") {
         img_newyork.draw(1050,350,img_w,img_h);
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(newyork[i])+"% "+ cityQuality[i], 0, 0);
+                font.drawString(ofToString(newyork[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+            }
+        }
     }
     
     if (city == "riverside") {
         img_riverside.draw(150,400,img_w,img_h);
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(riverside[i])+"% "+ cityQuality[i], 0, 0);
+                font.drawString(ofToString(riverside[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+            }
+        }
     }
-
+    
     
 }
 
