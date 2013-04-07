@@ -47,6 +47,10 @@ class testApp : public ofBaseApp{
         string city;
 
         // city imgs
+    
+    int img_w;
+    int img_h;
+    
         ofImage img_baltimore;
         ofImage img_boston;
         ofImage img_detroit;

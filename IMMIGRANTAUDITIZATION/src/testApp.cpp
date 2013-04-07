@@ -80,14 +80,18 @@ void testApp::setup(){
     gui->addLabelButton("WASHINGTON DC", false);
 
     //play buttons
-    gui->addSpacer(length-xInit, 2);
-    gui->addWidgetDown(new ofxUIImageButton(dim*2, dim*2, false, "GUI/pause.png", "IMAGE BUTTON"));
-    gui->addWidgetRight(new ofxUIImageToggle(dim*2, dim*2, false, "GUI/play.png", "IMAGE TOGGLE"));
+//    gui->addSpacer(length-xInit, 2);
+//    gui->addWidgetDown(new ofxUIImageButton(dim*2, dim*2, false, "GUI/pause.png", "IMAGE BUTTON"));
+//    gui->addWidgetRight(new ofxUIImageToggle(dim*2, dim*2, false, "GUI/play.png", "IMAGE TOGGLE"));
     
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 	ofBackground(red, green, blue);
     
 
+    // city img dimensions
+    img_h = 120;
+    img_w = 200;
+    
     //p
     
     for (int i=0; i<6; i++) {
@@ -257,7 +261,7 @@ void testApp::draw(){
 	ofCircle(px, py,8);
     
     if (city == "boston") {
-        img_boston.draw(1100,375,100,63);
+        img_boston.draw(1100,375,img_w,img_h);
         for (int i=0; i<6; i++) {
             
             if(rects[i].inside(px, py)){
@@ -281,7 +285,7 @@ void testApp::draw(){
     }
     
     if (city == "detroit") {
-        img_detroit.draw(770,320,100,63);
+        img_detroit.draw(770,320,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
                 ofSetColor(255,200);
