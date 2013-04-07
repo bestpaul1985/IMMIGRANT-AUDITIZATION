@@ -63,7 +63,7 @@ void testApp::setup(){
     red = 233; blue = 27; green = 52;
     float dim = 32;
 	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
-    float length = 320-xInit;
+    float length = 260-xInit;
 	
     drawPadding = false;
     gui = new ofxUICanvas(0,0,length+xInit, 400);
@@ -309,10 +309,6 @@ void testApp::update(){
     }
     
     cout<<city<<endl;
-
-    cout<<sound[1].getVolume()<<endl;
-    cout<<sound[4].getVolume()<<endl;
-
     
 	rooster.setVolume(0);
 
@@ -373,22 +369,23 @@ void testApp::draw(){
 
     
     if (city == "boston") {
+        ofSetColor(255, 255);
         img_boston.draw(1100,375,img_w,img_h);
         for (int i=0; i<6; i++) {
-            
             if(rects[i].inside(px, py)){
                 ofSetColor(255,200);
                 ofRectangle rect = font.getStringBoundingBox(ofToString(boston[i])+"% "+ cityQuality[i], 0, 0);
-        
+    
                 font.drawString(ofToString(boston[i])+"% "+ cityQuality[i],
                                 rects[i].getPosition().x+rects[i].getWidth()/2 -rect.getWidth()/2,
                                 rects[i].getPosition().y+rects[i].getHeight()/2+ rect.getHeight()/2);
             }
         }
-    
+
     }
     
     if (city == "baltimore") {
+        ofSetColor(255, 255);
         img_baltimore.draw(980,400,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
@@ -399,6 +396,7 @@ void testApp::draw(){
                                 rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
             }
         }
+  
     }
 
     
@@ -408,6 +406,7 @@ void testApp::draw(){
     }
     
     if (city == "detroit") {
+        ofSetColor(255, 255);
         img_detroit.draw(770,320,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
@@ -418,7 +417,7 @@ void testApp::draw(){
                                 rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
             }
         }
-    }
+           }
     
     if (city == "indianapolis") {
         img_indianapolis.draw(790,375,img_w,img_h);
@@ -437,6 +436,7 @@ void testApp::draw(){
     }
     
     if (city == "boise") {
+        ofSetColor(255, 255);
         img_boise.draw(200,250,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
@@ -450,6 +450,7 @@ void testApp::draw(){
     }
     
     if (city == "boulder") {
+        ofSetColor(255, 255);
         img_boulder.draw(300,420,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
@@ -463,6 +464,7 @@ void testApp::draw(){
     }
     
     if (city == "lakeland") {
+        ofSetColor(255, 255);
         img_lakeland.draw(900,550,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
@@ -476,6 +478,7 @@ void testApp::draw(){
     }
     
     if (city == "newyork") {
+        ofSetColor(255, 255);
         img_newyork.draw(1050,350,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
@@ -489,6 +492,7 @@ void testApp::draw(){
     }
     
     if (city == "riverside") {
+        ofSetColor(255, 255);
         img_riverside.draw(150,400,img_w,img_h);
         for (int i=0; i<6; i++) {
             if(rects[i].inside(px, py)){
