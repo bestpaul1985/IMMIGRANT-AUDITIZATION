@@ -69,7 +69,7 @@ void testApp::setup(){
     //city
     gui->addSpacer(length-xInit, 2);
 
-    gui->addLabelButton("NEW YORK", false);
+    // gui->addLabelButton("NEW YORK", false);
     gui->addLabelButton("BOSTON", false);
     gui->addLabelButton("DETROIT", false);
     gui->addLabelButton("BALTIMORE", false);
@@ -267,8 +267,9 @@ void testApp::draw(){
             ofSetColor(0, 100);
             ofRect(rects[i]);
         }else{
-            ofSetColor(255, 10);
+            ofSetColor(255, 0);
             ofRect(rects[i]);
+            ofSetColor(255, 255); // for imgs that follow
         }
     }
 
@@ -290,11 +291,12 @@ void testApp::draw(){
     }
     
     if (city == "baltimore") {
-        img_baltimore.draw(50,50);
+        img_baltimore.draw(980,400,img_w,img_h);
+        
     }
     
     if (city == "birmingham") {
-        img_birmingham.draw(50,50);
+        img_birmingham.draw(800,500,img_w,img_h);
     }
     
     if (city == "detroit") {
@@ -314,19 +316,19 @@ void testApp::draw(){
     }
     
     if (city == "indianapolis") {
-        img_indianapolis.draw(50,50);
+        img_indianapolis.draw(790,375,img_w,img_h);
     }
     
     if (city == "losangeles") {
-        img_losangeles.draw(50,50);
+        img_losangeles.draw(150,400,img_w,img_h);
     }
     
     if (city == "nashville") {
-        img_nashville.draw(50,50);
+        img_nashville.draw(770,440,img_w,img_h);
     }
     
     if (city == "washingtondc") {
-        img_washingtondc.draw(50,50);
+        img_washingtondc.draw(1000,400,img_w,img_h);
     }
     
     
@@ -367,17 +369,54 @@ void testApp::guiEvent(ofxUIEventArgs &e)
         if(name == "DETROIT"){
             if (button->getValue()) {
                 city = "detroit";
-                cout<<"ok"<<endl;
+                cout<<city<<endl;
             }
             
         }
         if(name == "BOSTON"){
             if (button->getValue()) {
                 city = "boston";
-                cout<<"ok"<<endl;
+                cout<<city<<endl;
             }
             
         }
+        if(name == "BALTIMORE"){
+            if(button->getValue()){
+                city = "baltimore";
+                cout<<city<<endl;
+            }
+        }
+        if(name == "BIRMINGHAM"){
+            if(button->getValue()){
+                city = "birmingham";
+                cout<<city<<endl;
+            }
+        }
+        if(name == "INDIANAPOLIS"){
+            if(button->getValue()){
+                city = "indianapolis";
+                cout<<city<<endl;
+            }
+        }
+        if(name == "LOS ANGELES"){
+            if(button->getValue()){
+                city = "losangeles";
+                cout<<city<<endl;
+            }
+        }
+        if(name == "NASHVILLE"){
+            if(button->getValue()){
+                city = "nashville";
+                cout<<city<<endl;
+            }
+        }
+        if(name == "WASHINGTON DC"){
+            if(button->getValue()){
+                city = "washingtondc";
+                cout<<city<<endl;
+            }
+        }
+        
         
     }
     else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
