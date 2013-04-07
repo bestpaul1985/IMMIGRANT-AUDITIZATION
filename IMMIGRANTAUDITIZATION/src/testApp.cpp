@@ -1,19 +1,30 @@
 #include "testApp.h"
 
-
 //--------------------------------------------------------------
 void testApp::setup(){	 
 
+    
+    
     ofEnableAlphaBlending();
     ofSetVerticalSync(true);
 	ofEnableSmoothing();
     
+    font.loadFont("GUI/NewMedia Fett.ttf", 32);
+
 	// load in sounds:
-	beat.loadSound("sounds/rocket.wav");
-	ow.loadSound("sounds/violin.aif");	
-	dog.loadSound("sounds/sustainednote.wav");	
-	rooster.loadSound("sounds/chant.wav");
-	
+	sound[0].loadSound("sounds/6sounds/ed_high.wav");
+	sound[1].loadSound("sounds/6sounds/ed_high_un.wav");
+	sound[2].loadSound("sounds/6sounds/ed_mid.wav");
+    sound[3].loadSound("sounds/6sounds/ed_mid_un.wav");
+    sound[4].loadSound("sounds/6sounds/ed_low.wav");
+    sound[5].loadSound("sounds/6sounds/ed_low_un.wav");
+    for (int i =0; i<6; i++) {
+        sound[i].setLoop(true);
+    }
+    
+	rooster.loadSound("sounds/6sounds/background2.wav");
+	rooster.setLoop(true);
+    
 	// load in city imgs
 	img_baltimore.loadImage("imgs/baltimore.jpg");
     img_birmingham.loadImage("imgs/birmingham.jpg");
@@ -23,7 +34,7 @@ void testApp::setup(){
     img_losangeles.loadImage("imgs/los-angeles.jpg");
     img_nashville.loadImage("imgs/nashville.jpg");
     img_washingtondc.loadImage("imgs/washington-dc.jpg");
-
+    img_BG.loadImage("imgs/us-lights.jpg");
 	
 	// we will bounce a circle using these variables:
 	px = 300;
@@ -63,7 +74,6 @@ void testApp::setup(){
     gui->addLabelButton("DETROIT", false);
     gui->addLabelButton("BALTIMORE", false);
     gui->addLabelButton("BIRMINGHAM", false);
-    gui->addLabelButton("DETROIT", false);
     gui->addLabelButton("INDIANAPOLIS", false);
     gui->addLabelButton("LOS ANGELES", false);
     gui->addLabelButton("NASHVILLE", false);
@@ -81,17 +91,36 @@ void testApp::setup(){
     //p
     
     for (int i=0; i<6; i++) {
-        rects[i].set(1440/2*(i%2), 900/3*(i%3), 1440/2, 900/3);
+        
+        float j = floor(i/2);
+        
+        rects[i].set(1440/2*(i%2), 900/3*(int(j)%3), 1440/2, 900/3);
     }
 
-
-
-    
     // Matthew's Code
-
-
     city = "";
-
+   
+    //data
+    boston[0] = 35.2; //ed-hi
+    boston[1] = 2.5;//un-hi
+    boston[2] = 37.6;//ed-mid
+    boston[3] = 3.8;//un-mid
+    boston[4]= 9.0;//ed - low
+    boston[5]= 7.1;//un-low
+    
+    detroit[0] = 31.5; //ed-hi
+    detroit[1] = 2.3;//un-hi
+    detroit[2] = 38.2;//ed-mid
+    detroit[3] = 4.5;//un-mid
+    detroit[4]= 16.1;//ed - low
+    detroit[5]= 9.9;//un-low
+    
+    cityQuality[0] = "High Education";
+    cityQuality[1] = "High Ed Unemployed";
+    cityQuality[2] = "Middle Education";
+    cityQuality[3] = "Middle Ed Unemployed";
+    cityQuality[4] = "Low Education";
+    cityQuality[5] = "Low Ed Unemployed";
 }
 
 
@@ -99,8 +128,10 @@ void testApp::setup(){
 void testApp::update(){
 
 	// update the sound playing system:
-	ofSoundUpdate();	
-	
+	ofSoundUpdate();
+	if (!rooster.getIsPlaying()) {
+          rooster.play();
+    }
 	// (1) we increase px and py by adding vx and vy
 	px += vx;
 	py += vy;
@@ -110,32 +141,78 @@ void testApp::update(){
 	if (px < 0){
 		px = 0;
 		vx *= -1;
-		dog.play();
+		
 	} else if (px > ofGetWidth()){
 		px = ofGetWidth();
 		vx *= -1;
-		ow.play();
+		
 	}
 	// vertical collisions:
 	if (py < 0 ){
 		py = 0;
 		vy *= -1;
-		rooster.play();
 	} else if (py > ofGetHeight()){
 		py = ofGetHeight();
 		vy *= -1;
-		beat.play();
 	}
-	// (3) slow down velocity:
 	vx 	*= 0.996f;
 	vy 	*= 0.996f;
 
-	// (4) we use velocity for volume of the samples:
-	float vel = sqrt(vx*vx + vy*vy);
-	ow.setVolume(MIN(vel/5.0f, 1));
-	beat.setVolume(MIN(vel/5.0f, 1));
-	dog.setVolume(MIN(vel/5.0f, 1));
-	rooster.setVolume(MIN(vel/5.0f, 1));
+    for (int i=0; i<6; i++) {
+        if (rects[i].inside(px, py)) {
+            
+            for (int j=0; j<6; j++) {
+                if (j!=i) {
+                    sound[j].stop();
+                }
+            }
+        
+            if (!sound[i].getIsPlaying()) {
+                sound[i].play();
+               
+            }
+        }
+    }
+    
+    if (city =="") {
+        sound[0].setVolume(0);
+        sound[1].setVolume(0);
+        sound[2].setVolume(0);
+        sound[3].setVolume(0);
+        sound[4].setVolume(0);
+        sound[5].setVolume(0);
+    }
+    
+    if (city == "boston") {
+
+        sound[0].setVolume(ofMap(boston[0], 13.1, 50.4, 0, 1,true));
+        sound[1].setVolume(ofMap(boston[1], 13.1, 50.4, 0, 1,true));
+        sound[2].setVolume(ofMap(boston[2],26.9,54.5,0,1,true));
+        sound[3].setVolume(ofMap(boston[3],1.6,18.1,0,1,true));
+        sound[4].setVolume(ofMap(boston[4],4.8,46.5,0,1,true));
+        sound[5].setVolume(ofMap(boston[5],0.4,19.7,0,1,true));
+        
+
+   
+    }
+    
+    if (city == "detroit") {
+        
+        sound[0].setVolume(ofMap(detroit[0],13.1,50.4,0,1,true)); //ed-hi
+        sound[1].setVolume(ofMap(detroit[1],0,9.1,0,1,true)); //un-hi
+        sound[2].setVolume(ofMap(detroit[2],26.9,54.5,0,1,true)); //ed-mid
+        sound[3].setVolume(ofMap(detroit[3],1.6,18.1,0,1,true)); //un-mid
+        sound[4].setVolume(ofMap(detroit[4],4.8,46.5,0,1,true));//ed-low
+        sound[5].setVolume(ofMap(detroit[5],0.4,19.7,0,1,true));//un-low
+        
+
+    }
+    cout<<city<<endl;
+
+    cout<<sound[4].getVolume()<<endl;
+
+    
+	rooster.setVolume(0);
 
 	// (5) grab the fft, and put in into a "smoothed" array,
 	//		by taking maximums, as peaks and then smoothing downward
@@ -154,12 +231,14 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){   
-    ofBackground(red, green, blue, 255);
-	
+    
 	ofPushStyle();
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	ofPopStyle();
-
+    
+    ofSetColor(255);
+    img_BG.draw(0,0,1440,900);
+    
     
 	// draw the fft resutls:
 	ofSetColor(255,255,255,100);
@@ -178,7 +257,19 @@ void testApp::draw(){
 	ofCircle(px, py,8);
     
     if (city == "boston") {
-        img_boston.draw(50,50);
+        img_boston.draw(1100,375,100,63);
+        for (int i=0; i<6; i++) {
+            
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(boston[i])+"% "+ cityQuality[i], 0, 0);
+        
+                font.drawString(ofToString(boston[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2 -rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+ rect.getHeight()/2);
+            }
+        }
+    
     }
     
     if (city == "baltimore") {
@@ -190,7 +281,19 @@ void testApp::draw(){
     }
     
     if (city == "detroit") {
-        img_detroit.draw(50,50);
+        img_detroit.draw(770,320,100,63);
+        for (int i=0; i<6; i++) {
+            if(rects[i].inside(px, py)){
+                ofSetColor(255,200);
+                ofRectangle rect = font.getStringBoundingBox(ofToString(boston[i])+"% "+ cityQuality[i], 0, 0);
+                
+
+                font.drawString(ofToString(detroit[i])+"% "+ cityQuality[i],
+                                rects[i].getPosition().x+rects[i].getWidth()/2-rect.getWidth()/2,
+                                rects[i].getPosition().y+rects[i].getHeight()/2+rect.getHeight()/2);
+                
+            }
+        }
     }
     
     if (city == "indianapolis") {
@@ -253,40 +356,35 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUILabelButton *button = (ofxUILabelButton *) e.widget;
         cout << name << "\t value: " << button->getValue() << endl;
-        ofxUILabelToggle *toggle = (ofxUILabelToggle *) e.widget;
-        if(e.widget->getName() == "NEW YORK")
-        {
+
+        if(name == "DETROIT"){
+            if (button->getValue()) {
+                city = "detroit";
+                cout<<"ok"<<endl;
+            }
             
         }
-        else if(e.widget->getName() == "BOSTON")
-        {
-            city = "boston";
-<<<<<<< HEAD
-            cout<<city<<endl;
-    
-//                ofPushMatrix();
-//                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
-//                    ofRotate(ofRandom(-25,25), 0, 0, 1);//rotate from centre
-//                    ofPushMatrix();
-//                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
-//                    ofPopMatrix();
-//                ofPopMatrix();
+        if(name == "BOSTON"){
+            if (button->getValue()) {
+                city = "boston";
+                cout<<"ok"<<endl;
+            }
             
-            
-                    }
-            
-=======
-           
-            //                ofPushMatrix();
-            //                    ofTranslate(img_boston.width/2, img_boston.height/2, 0);//move pivot to centre
-            //                    ofRotate(ofRandom(-25,25), 0, 0, 1);//rotate from centre
-            //                    ofPushMatrix();
-            //                        img_boston.draw(-img_boston.width/2,-img_boston.height/2);//move back by the centre offset
-            //                    ofPopMatrix();
-            //                ofPopMatrix();
+        }
+//        if(e.widget->getName() == "DETROIT")
+//        {
+//            if (<#condition#>) {
+//                <#statements#>
+//            }
+//            city = "detroit";
+//           
+//        }
+//        else if(e.widget->getName() == "BOSTON")
+//        {
+//            city = "boston";
+//           
+//        }
         
->>>>>>> bcb1d262fa90f1c12dfd0d8f03a6bf60ff918050
-        }
     }
     else if(kind == OFX_UI_WIDGET_LABELTOGGLE)
     {

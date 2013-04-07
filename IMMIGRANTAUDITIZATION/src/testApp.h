@@ -21,11 +21,9 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		ofSoundPlayer 		beat;
-		ofSoundPlayer		ow;
-		ofSoundPlayer		dog;
-		ofSoundPlayer		rooster;
-
+		ofSoundPlayer 		rooster;
+		ofSoundPlayer		sound[6];
+        
 		float 				* fftSmoothed;
 		// we will draw a rectangle, bouncing off the wall:
 		float 				px, py, vx, vy;
@@ -38,22 +36,28 @@ class testApp : public ofBaseApp{
         void guiEvent(ofxUIEventArgs &e);
         bool drawPadding;
         float red, green, blue;
+        
+        ofRectangle rects[6];
+        ofRectangle rect;
     
-    ofRectangle rects[6];
-    
-    // city active
-    string city;
+        float boston[6];
+        float detroit[6];
+        string cityQuality[6];
+        // city active
+        string city;
 
-    // city imgs
-    ofImage img_baltimore;
-    ofImage img_boston;
-    ofImage img_detroit;
-    ofImage img_indianapolis;
-    ofImage img_losangeles;
-    ofImage img_nashville;
-    ofImage img_washingtondc;
-    ofImage img_birmingham;
-    ofImage img_BG;
+        // city imgs
+        ofImage img_baltimore;
+        ofImage img_boston;
+        ofImage img_detroit;
+        ofImage img_indianapolis;
+        ofImage img_losangeles;
+        ofImage img_nashville;
+        ofImage img_washingtondc;
+        ofImage img_birmingham;
+        ofImage img_BG;
+    
+        ofTrueTypeFont font;
     
 };
 
