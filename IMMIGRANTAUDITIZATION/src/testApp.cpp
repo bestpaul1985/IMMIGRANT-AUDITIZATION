@@ -318,13 +318,13 @@ void testApp::draw(){
     
     
     
-	//Paul's code
+	// draw rectangle hotspots
     for (int i=0; i<6; i++) {
         if (rects[i].inside(px, py)) {
-            ofSetColor(255, 100);
+            ofSetColor(0, 100);
             ofRect(rects[i]);
         }else{
-            ofSetColor(255, 50);
+            ofSetColor(255, 10);
             ofRect(rects[i]);
         }
     }
