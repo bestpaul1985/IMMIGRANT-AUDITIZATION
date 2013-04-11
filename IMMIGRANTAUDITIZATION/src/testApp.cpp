@@ -238,8 +238,8 @@ void testApp::update(){
 		py = ofGetHeight();
 		vy *= -1;
 	}
-	vx 	*= 0.996f;
-	vy 	*= 0.996f;
+	vx 	*= 0.999f;
+	vy 	*= 0.999f;
 
     for (int i=0; i<6; i++) {
         if (rects[i].inside(px, py)) {
